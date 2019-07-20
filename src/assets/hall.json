@@ -1,3 +1,8 @@
 {
-  "title": "dev halla"
+  "title": "dev halla",
+  "phone": "999-999-9999",
+  "email": "aaa@bbb.ccc",
+  "brand": "My Brand",
+  "slogan": "very nice content will showing here",
+  "hero": "hero.png"
 }

@@ -8,10 +8,16 @@ import { environment as env } from 'src/environments/environment';
   styleUrls: ['./app.tag.sass']
 })
 export class AppTag {
-  title = 'demoHall';
+  title = 'title';
+  phone = '';
+  email = '';
+  brand = '';
+  slogan = '';
+  hero = '';
   constructor(private hc: HttpClient) {
-    this.hc.get(`${env.dataHost}/hall.json`).subscribe(e => {
+    this.hc.get(`${env.dataHost}/hall.json`).subscribe((e: any) => {
       Object.assign(this, e);
+      this.hero = `url(${env.dataHost + e.hero})`;
     });
   }
 }
