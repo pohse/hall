@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment as env } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class AppTag {
   title = 'demoHall';
+  constructor(private hc: HttpClient) {
+    this.hc.get(`${env.dataHost}/hall.json`).subscribe(e => {
+      Object.assign(this, e);
+    });
+  }
 }
