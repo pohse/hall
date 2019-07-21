@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment as env } from 'src/environments/environment';
 
@@ -14,10 +15,15 @@ export class AppTag {
   brand = '';
   slogan = '';
   hero = '';
-  constructor(private hc: HttpClient) {
-    this.hc.get(`${env.dataHost}/hall.json`).subscribe((e: any) => {
-      Object.assign(this, e);
-      this.hero = `url(${env.dataHost + e.hero})`;
+  constructor(
+    private ar: ActivatedRoute,
+    private hc: HttpClient) {
+    ar.queryParams.subscribe(q => {
+      const { hl = 'en' } = q;
+      this.hc.get(`${env.dataHost}/${hl}/hall.json`).subscribe((e: any) => {
+        Object.assign(this, e);
+        this.hero = `url(${env.dataHost + e.hero})`;
+      });
     });
   }
 }

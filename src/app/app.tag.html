@@ -2,6 +2,10 @@
   <div class='top'>
     <a class='phone' href='{{ "tel://" + phone }}'> {{ phone }} </a>
     <a class='email' href='{{ "mailto://" + email }}' target='about:blank'> {{ email }} </a>
+    <div class='hl'>
+      <a [routerLink]='' [queryParams]='{ hl: "en" }'> English </a>
+      <a [routerLink]='' [queryParams]='{ hl: "hant" }'> 中文 </a>
+    </div>
   </div>
   <div class='key'>
     <h1> {{ brand }} </h1>
